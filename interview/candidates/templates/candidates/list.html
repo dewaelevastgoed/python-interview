@@ -1,0 +1,29 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Candidate Manager</h1>
+    <div id="app">
+      <input type="text" placeholder="Search candidates">
+     
+      <table>
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="candidate in candidates" :key="candidate.id">
+            <td v-html="candidate.first_name"></td>
+            <td v-html="candidate.last_name"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="/static/js/axios.min.js"></script>
+    <script src="/static/js/vue.js"></script>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
