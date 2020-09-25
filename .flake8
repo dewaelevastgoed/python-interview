@@ -1,0 +1,4 @@
+[flake8]
+exclude=proj/*/migrations/*
+max-line-length=88
+

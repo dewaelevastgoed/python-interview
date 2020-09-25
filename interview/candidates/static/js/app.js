@@ -9,7 +9,7 @@ var app = new Vue({
     methods: {
         loadCandidates () {
             axios.get('api/candidates')
-                .then(function (response) {
+                .then((response) => {
                     // handle success
                     this.candidates = response.data;
                 })

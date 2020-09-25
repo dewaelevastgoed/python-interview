@@ -5,6 +5,9 @@ class Candidate(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ('last_name', 'first_name')
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
@@ -24,7 +27,11 @@ class Interview(models.Model):
         (STATE_FINISHED, 'Finished'),
     )
 
-    candidate = models.ForeignKey(Candidate, related_name='interviews', on_delete=models.CASCADE)
+    candidate = models.ForeignKey(
+        Candidate, related_name='interviews', on_delete=models.CASCADE)
     status = models.PositiveSmallIntegerField(default=STATE_SCHEDULED, choices=STATES)
     time = models.DateTimeField()
     feedback = models.TextField(default='', blank=True)
+
+    def __str__(self):
+        return f"{self.candidate.first_name} {self.candidate.last_name}"
