@@ -4,19 +4,21 @@
   <body>
     <h1>Candidate Manager</h1>
     <div id="app">
-      <input type="text" placeholder="Search candidates">
+      <input type="text" placeholder="Search candidates" v-model="query">
      
       <table>
         <thead>
           <tr>
             <th>First name</th>
             <th>Last name</th>
+            <th>Download ICS</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="candidate in candidates" :key="candidate.id">
             <td v-html="candidate.first_name"></td>
             <td v-html="candidate.last_name"></td>
+            <td><a :href="`/api/candidates/${candidate.id}/ics`">Download ics</a></td>
           </tr>
         </tbody>
       </table>

@@ -1,9 +1,15 @@
 from django.contrib import admin
 
-from .models import Candidate
+from .models import Candidate, Interview
 
+
+class InterviewInline(admin.TabularInline):
+    model = Interview
+    extra = 1
 
 class CandidateAdmin(admin.ModelAdmin):
-    pass
+    inlines = [
+        InterviewInline
+    ]
 
 admin.site.register(Candidate, CandidateAdmin)

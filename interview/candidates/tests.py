@@ -31,3 +31,22 @@ class CandidateAPITest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         candidates = response.json()
         self.assertEqual(len(candidates), 2)
+
+    def test_candidate_list_with_query(self):
+        response = self.client.get('/api/candidates?query=Spar')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        candidates = response.json()
+        self.assertEqual(len(candidates), 1)
+
+    def test_candidate_with_specific_query(self):
+        response = self.client.get('/api/candidates?last_name=Spar')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        candidates = response.json()
+        self.assertEqual(len(candidates), 1)
+
+    def test_candidate_with_multiple_specific_queries(self):
+        response = self.client.get('/api/candidates?last_name=Spar&first_name=jack')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        candidates = response.json()
+        self.assertEqual(len(candidates), 1)
+

@@ -14,6 +14,10 @@ class Candidate(models.Model):
         for interview in self.interviews.all():
             print(index + " - " + interview.time)
 
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
 
 class Interview(models.Model):
     STATE_SCHEDULED = 1
