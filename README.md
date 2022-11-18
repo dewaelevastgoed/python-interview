@@ -1,4 +1,4 @@
-# django-interview
+# python-interview
 
 A sample project to use during a Python / Django interview. 
 
